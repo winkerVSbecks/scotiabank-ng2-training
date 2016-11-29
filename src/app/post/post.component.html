@@ -20,7 +20,7 @@
     <div class="f4 flex items-center lh-solid pointer"
       (click)="addLike($event)"
       [ngClass]="{
-        red: likeCount > 0,
+        'light-red': likeCount > 0,
         gray: likeCount === 0
       }">
       <app-icon-heart class="mr2">

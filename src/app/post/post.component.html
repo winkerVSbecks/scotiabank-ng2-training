@@ -1,0 +1,31 @@
+<article class="pv4 bt bb b--black-10 ph3 ph0-l">
+  <div>
+    <app-heading>
+      {{ title }}
+    </app-heading>
+    <p class="f5 f4-l lh-copy athelas">
+      {{ body }}
+    </p>
+  </div>
+
+  <div class="flex items-stretch">
+    <div class="flex-auto">
+      <p class="f6 lh-copy gray mv0">
+        By <span class="ttu">{{ author }}</span>
+      </p>
+      <app-date [date]="date">
+      </app-date>
+    </div>
+
+    <div class="f4 flex items-center lh-solid pointer"
+      (click)="addLike($event)"
+      [ngClass]="{
+        red: likeCount > 0,
+        gray: likeCount === 0
+      }">
+      <app-icon-heart class="mr2">
+      </app-icon-heart>
+      {{ likeCount }}
+    </div>
+  </div>
+</article>

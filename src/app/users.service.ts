@@ -16,4 +16,10 @@ export class UsersService {
       });
   }
 
+  getAuthorName(id) {
+    return this.users[id] ?
+      this.users[id].name :
+      'N/A';
+  }
+
 }

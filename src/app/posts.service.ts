@@ -13,6 +13,16 @@ export class PostsService {
     private usersService: UsersService
   ) {}
 
+  getFilteredPosts(query: string) {
+    if (!this.posts) { return []; }
+
+    return this.posts.filter(post => {
+      return post.title.toLowerCase().includes(
+        query.toLowerCase()
+      );
+    });
+  }
+
   getPosts() {
     this.serverService
       .get('https://jsonplaceholder.typicode.com/posts')
@@ -23,13 +33,22 @@ export class PostsService {
       });
   }
 
+  getPost(id: number) {
+    return this.serverService
+      .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .map(post => this.normalizesPost(post))
+      .do(post => this.fetchUser(post.userId))
+  }
+
+  fetchUser(id) {
+    return this.usersService.getUser(id);
+  }
+
   fetchUsers(posts) {
     const ids = new Set(posts.map(post => post.userId));
 
     Array.from(ids)
-      .forEach(id => {
-        this.usersService.getUser(id)
-      });
+      .forEach(id => this.fetchUser(id));
   }
 
   normalizesPosts(posts) {

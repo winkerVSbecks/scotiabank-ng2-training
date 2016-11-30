@@ -1,0 +1,9 @@
+<app-post
+  [title]="post.title"
+  [body]="post.body"
+  [likeCount]="post.likeCount"
+  (likeCountChange)="postsService.updateLikeCount(post.id, $event)"
+  [author]="usersService.getAuthorName(post.userId)"
+  [date]="post.date"
+  [id]="post.id">
+</app-post>

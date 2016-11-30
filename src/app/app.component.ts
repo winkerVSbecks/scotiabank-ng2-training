@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { PostsService } from './posts.service';
-import { UsersService } from './users.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +7,11 @@ import { UsersService } from './users.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   constructor(
-    private postsService: PostsService,
-    private usersService: UsersService
+    private postsService: PostsService
   ) {
     this.postsService.getPosts();
   }
 
-  getAuthorName(id) {
-    return this.usersService.users[id] ?
-      this.usersService.users[id].name :
-      'N/A';
-  }
 }

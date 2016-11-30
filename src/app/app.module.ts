@@ -12,6 +12,11 @@ import { PostsListComponent } from './posts-list/posts-list.component';
 import { PostsService } from './posts.service';
 import { ServerService } from './server.service';
 import { UsersService } from './users.service';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { HomeContainerComponent } from './home-container/home-container.component';
+import { PostContainerComponent } from './post-container/post-container.component';
+import { routing } from './router.config';
+
 
 @NgModule({
   declarations: [
@@ -20,12 +25,16 @@ import { UsersService } from './users.service';
     DateComponent,
     HeadingComponent,
     IconHeartComponent,
-    PostsListComponent
+    PostsListComponent,
+    SearchbarComponent,
+    HomeContainerComponent,
+    PostContainerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [
     PostsService,
